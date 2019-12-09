@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11037EED80B211FF9F7EB69 /* Pods_EDOauthApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DE62BAB197E7128AD0F31C /* Pods_EDOauthApp.framework */; };
 		C766F888239E964500919087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C766F887239E964500919087 /* AppDelegate.swift */; };
 		C766F88A239E964500919087 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C766F889239E964500919087 /* SceneDelegate.swift */; };
 		C766F88C239E964500919087 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C766F88B239E964500919087 /* ViewController.swift */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0850B448DD53BFD89A880E73 /* Pods-EDOauthApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EDOauthApp.release.xcconfig"; path = "Target Support Files/Pods-EDOauthApp/Pods-EDOauthApp.release.xcconfig"; sourceTree = "<group>"; };
+		B2DE62BAB197E7128AD0F31C /* Pods_EDOauthApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EDOauthApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA194DEF3CDB1C866222AD69 /* Pods-EDOauthApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EDOauthApp.debug.xcconfig"; path = "Target Support Files/Pods-EDOauthApp/Pods-EDOauthApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C766F884239E964500919087 /* EDOauthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EDOauthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C766F887239E964500919087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C766F889239E964500919087 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B11037EED80B211FF9F7EB69 /* Pods_EDOauthApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		544BA85DB31B386DC4AA13DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA194DEF3CDB1C866222AD69 /* Pods-EDOauthApp.debug.xcconfig */,
+				0850B448DD53BFD89A880E73 /* Pods-EDOauthApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7A476642896371D0C1AD1381 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2DE62BAB197E7128AD0F31C /* Pods_EDOauthApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C766F87B239E964500919087 = {
 			isa = PBXGroup;
 			children = (
 				C766F886239E964500919087 /* EDOauthApp */,
 				C766F885239E964500919087 /* Products */,
+				544BA85DB31B386DC4AA13DE /* Pods */,
+				7A476642896371D0C1AD1381 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C766F89B239E964D00919087 /* Build configuration list for PBXNativeTarget "EDOauthApp" */;
 			buildPhases = (
+				39B1CE67E31BFB24FC4CEE00 /* [CP] Check Pods Manifest.lock */,
 				C766F880239E964500919087 /* Sources */,
 				C766F881239E964500919087 /* Frameworks */,
 				C766F882239E964500919087 /* Resources */,
+				1F6AAD8E6E1D1268347EF7FA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +162,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F6AAD8E6E1D1268347EF7FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EDOauthApp/Pods-EDOauthApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EDOauthApp/Pods-EDOauthApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EDOauthApp/Pods-EDOauthApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39B1CE67E31BFB24FC4CEE00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EDOauthApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C766F880239E964500919087 /* Sources */ = {
@@ -286,11 +355,13 @@
 		};
 		C766F89C239E964D00919087 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA194DEF3CDB1C866222AD69 /* Pods-EDOauthApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WP32MX2WJ4;
 				INFOPLIST_FILE = EDOauthApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,17 +369,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cerbyinnovations.EDOauthApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		C766F89D239E964D00919087 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0850B448DD53BFD89A880E73 /* Pods-EDOauthApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WP32MX2WJ4;
 				INFOPLIST_FILE = EDOauthApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,7 +389,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cerbyinnovations.EDOauthApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

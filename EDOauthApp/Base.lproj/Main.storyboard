@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +11,108 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EDOauthApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rG-Sv-8gA" userLabel="ButtonContainer">
+                                <rect key="frame" x="20" y="50" width="335" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHw-Rk-btv">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="8ai-U2-YUB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Do Oauth">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doAuthFunc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SbK-UJ-6Xm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="A4d-Re-M8o">
+                                        <rect key="frame" x="235" y="0.0" width="100" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="8UO-wm-IUm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Get Data">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="getCmdrData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QCQ-pr-tpX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="XHw-Rk-btv" secondAttribute="bottom" id="65A-AG-Ayh"/>
+                                    <constraint firstItem="XHw-Rk-btv" firstAttribute="leading" secondItem="3rG-Sv-8gA" secondAttribute="leading" id="7im-Wv-eCZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="A4d-Re-M8o" secondAttribute="trailing" id="DlM-sp-L19"/>
+                                    <constraint firstItem="A4d-Re-M8o" firstAttribute="top" secondItem="3rG-Sv-8gA" secondAttribute="top" id="KXT-PO-P2D"/>
+                                    <constraint firstAttribute="height" constant="100" id="O1m-0l-lHd"/>
+                                    <constraint firstAttribute="bottom" secondItem="A4d-Re-M8o" secondAttribute="bottom" id="QnG-BO-tmc"/>
+                                    <constraint firstItem="XHw-Rk-btv" firstAttribute="top" secondItem="3rG-Sv-8gA" secondAttribute="top" id="Xqu-Z8-6AG"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CMDRName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6h-f4-5gS">
+                                <rect key="frame" x="10" y="160" width="355" height="25"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="tta-lP-kRM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CMDRLocation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-V4-0iR">
+                                <rect key="frame" x="10" y="195" width="355" height="25"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="KIn-v3-b0A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="infoPane" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TlB-yr-F6h">
+                                <rect key="frame" x="10" y="230" width="355" height="437"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3rG-Sv-8gA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="4wi-hg-lnO"/>
+                            <constraint firstItem="T2R-V4-0iR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Mye-0h-e4e"/>
+                            <constraint firstItem="TlB-yr-F6h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Qv4-2d-F7V"/>
+                            <constraint firstItem="M6h-f4-5gS" firstAttribute="top" secondItem="3rG-Sv-8gA" secondAttribute="bottom" constant="10" id="SaB-1W-fbQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TlB-yr-F6h" secondAttribute="bottom" id="aPH-sz-TsM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TlB-yr-F6h" secondAttribute="trailing" constant="10" id="bOv-Hj-hBd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M6h-f4-5gS" secondAttribute="trailing" constant="10" id="bSx-tf-Xma"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TlB-yr-F6h" secondAttribute="trailing" constant="10" id="bkl-x5-08g"/>
+                            <constraint firstItem="TlB-yr-F6h" firstAttribute="top" secondItem="T2R-V4-0iR" secondAttribute="bottom" constant="10" id="eXh-aw-KsA"/>
+                            <constraint firstItem="T2R-V4-0iR" firstAttribute="top" secondItem="M6h-f4-5gS" secondAttribute="bottom" constant="10" id="g9P-6O-5lm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="T2R-V4-0iR" secondAttribute="trailing" constant="10" id="gCx-yI-Rqx"/>
+                            <constraint firstItem="3rG-Sv-8gA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ldC-wX-xnh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3rG-Sv-8gA" secondAttribute="trailing" constant="20" id="v37-Gd-ieO"/>
+                            <constraint firstItem="M6h-f4-5gS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="wBB-mu-cAL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cmdrName" destination="M6h-f4-5gS" id="qep-j5-7OT"/>
+                        <outlet property="displayInfo" destination="T2R-V4-0iR" id="5Wz-un-Cfs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="118.29085457271366"/>
         </scene>
     </scenes>
 </document>

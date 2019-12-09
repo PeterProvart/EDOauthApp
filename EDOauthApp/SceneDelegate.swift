@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import OAuthSwift
 
+// Only  try to build this if selecting IOS13.
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+            guard let url = URLContexts.first?.url else {
+                return
+            }
+        print ("\(url)")
+            if (url.host == "callback") {
+                print ("Entering Handle")
+                // Use Oauth Swift URl Callback handler to extract the tokens
+                OAuthSwift.handle(url: url)
+                print ("Exit Handle")
+            }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
