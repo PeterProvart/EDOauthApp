@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //retrieveTheTokens()
-        // Retrieve OautTokens, refresh token from Keychain.
+        // Retrieve OauthTokens, refresh token from Keychain.
         if let accessToken = keychain.string(forKey: "the_token_key") {
             print("Access Token " + "\(accessToken)")
 //            sets the oauthtoken in the global instance
@@ -58,16 +58,9 @@ class ViewController: UIViewController {
         else  {
             print ("No RefreshToken ovveride")
         }
-//        if let secretToken = keychain.string(forKey: "the_secret_token_key") {
-//            print("Secret Token " + "\(secretToken)")
-//            self.oauthswift.client.credential.oauthTokenSecret = secretToken
-//        }
-//        else  {
-//            print ("No RefreshToken ovveride")
-//        }
+
     }
- //MARK : Insert NEw IB Action here
-    
+ 
     @IBAction func doAuthFunc(_ sender: UIButton) {
         print("Get Oauth Button Pressed")
         frontierOauth() //Launch Oauth process when the button is preossed.
@@ -113,7 +106,7 @@ class ViewController: UIViewController {
     .replacingOccurrences(of: "=", with: "")
     .trimmingCharacters(in: .whitespaces)
         
-    // create State of 32 chats using the Oauth State generator. State is used to check what is returned by Frontier matches the Challnege sent etc.
+    // create State of 32 chats using the Oauth State generator. State is used to check what is returned by Frontier matches the Challenge sent etc.
     let stateST = generateState(withLength: 32)
 
     //Define Code Challenge Function.
@@ -146,7 +139,7 @@ class ViewController: UIViewController {
     )
     
         loauthswift.accessTokenBasicAuthentification = true
-    // Uses Safari Browser to handle the Authentication to Frontier. IN essence PKCe needs us to popup a window let the user authenticate, and then Frontier will return to the Callback URL the Token. This is handled by SceneDelegate in IOS13.( Check comments there )
+    // Uses Safari Browser to handle the Authentication to Frontier. IN essence PKCE needs us to popup a window let the user authenticate, and then Frontier will return to the Callback URL the Token. This is handled by SceneDelegate in IOS13.( Check comments there )
     loauthswift.authorizeURLHandler = SafariURLHandler(viewController: self  , oauthSwift: oauthswift)
     
     // Create the Verifier, Code Challenge and State to be used.
@@ -183,7 +176,7 @@ class ViewController: UIViewController {
 
     }
     
-    // Gets the CMDR Data from frontier. No arguments passed to it , as will used the Global oauth instance. This is because we MAY pull in tokens from keychain on startup, or copy the Oauth type from the Authorisation ( ie when we copy loauthswift to oauthswift.
+    // Gets the CMDR Data from Frontier. No arguments passed to it , as will used the Global oauth instance. This is because we MAY pull in tokens from keychain on startup, or copy the Oauth type from the Authorisation ( ie when we copy loauthswift to oauthswift.
     func getFrontier() {
         let _ = self.oauthswift.client.get(
             "https://companion.orerve.net/profile",
@@ -191,11 +184,11 @@ class ViewController: UIViewController {
                 switch result {
                 case .success(let response):
                     let jsonSrc = try! response.jsonObject()
-                    // uses Swifty JSon to interpret the JSON thingy returned by Frontier.
+                    // Uses Swifty JSon to interpret the JSON thingy returned by Frontier.
                     let jsonDict : JSON =  JSON(jsonSrc)
                     // Search for some CMDR specific data to display.
                     if let cmdrDataSystemName : String = jsonDict["lastSystem"]["name"].stringValue { print("\(cmdrDataSystemName)")
-                        // Chance the Display Labels to the retrieved text.
+                        // Change the Display Labels to the retrieved text.
                         self.CMDRLocation.text = cmdrDataSystemName
                         print("DSiaplyInfo = " + "\(self.CMDRLocation.text)")
                     }
@@ -207,8 +200,8 @@ class ViewController: UIViewController {
                         self.cmdrName.text = cmdrNameID
                         print("DSiaplyInfo = " + "\(self.cmdrName.text)")
                     }
-                    print(jsonDict as Any) //just print whole disctionary to debug window.
-                    // Below takes teh raw dicitonary and send to the Info Pane ( 20 lines only )
+                    print(jsonDict as Any) //Just print whole dictionary to debug window.
+                    // Below takes the raw dictionary and sends to the Info Pane ( 20 lines only )
                     self.infoPane.text = "\(jsonDict.rawString() )"
                 case .failure(let error):
                     print(error.description)
