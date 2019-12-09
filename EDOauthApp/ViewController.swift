@@ -22,13 +22,13 @@ class ViewController: UIViewController {
     var keychain = KeychainPreferences.sharedInstance
     
     // The CLIENT-ID and SHARED_KEY are created by Frontier when you register your app, get them and enter Here.
-    let frontierClientIdIsKey = "*********************"
-    let frontierSharedKeyIsSecret = "********************"
+    let frontierClientIdIsKey = "******************"
+    let frontierSharedKeyIsSecret = "******************"
     
     // Created a Global Instance of Oauth, used for the Callback data to pass between the UI's & Important to Initialise it.
     var oauthswift = OAuth2Swift(
-        consumerKey:    "*******************", //Client ID from Frontier
-        consumerSecret: "*******************", //Shared Key from Frontier
+        consumerKey:    "******************", //Client ID from Frontier
+        consumerSecret: "******************", //Shared Key from Frontier
         authorizeUrl: "https://auth.frontierstore.net/auth",
         accessTokenUrl: "https://auth.frontierstore.net/token",
         responseType: "code"
@@ -81,7 +81,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var cmdrName: UILabel!
     
-    @IBOutlet weak var displayInfo: UILabel!
+    @IBOutlet weak var CMDRLocation: UILabel!
+    
+    // InfoPane Text Label has been set to display 20 lines in Storyboard.
+    @IBOutlet weak var infoPane: UILabel!
+    
     
 
     //URLS for AUthorisation.
@@ -158,7 +162,7 @@ class ViewController: UIViewController {
     let handle =
         loauthswift.authorize(
             // OauthSiftTest is this app name and /callback is the 'hostname' typical URI definition. Need to set in URL Schemes.
-        withCallbackURL: URL(string: "OuathSwiftTest://callback/")!,
+        withCallbackURL: URL(string: "EDOauthApp://callback/")!,
         scope: "capi",
         state: newState,
         codeChallenge: codeChallenge!,
@@ -192,17 +196,20 @@ class ViewController: UIViewController {
                     // Search for some CMDR specific data to display.
                     if let cmdrDataSystemName : String = jsonDict["lastSystem"]["name"].stringValue { print("\(cmdrDataSystemName)")
                         // Chance the Display Labels to the retrieved text.
-                        self.displayInfo.text = cmdrDataSystemName
+                        self.CMDRLocation.text = cmdrDataSystemName
+                        print("DSiaplyInfo = " + "\(self.CMDRLocation.text)")
                     }
                     if let cmdrDataSystemID : Int = jsonDict["lastSystem"]["id"].intValue{
                         print ("\(cmdrDataSystemID)")
                     }
-                    if let cmdrName : String = jsonDict["commander"]["name"].stringValue{
-                        print ("\(cmdrName)")
-                        self.cmdrName.text = cmdrName
+                    if let cmdrNameID : String = jsonDict["commander"]["name"].stringValue{
+                        print ("\(cmdrNameID)")
+                        self.cmdrName.text = cmdrNameID
+                        print("DSiaplyInfo = " + "\(self.cmdrName.text)")
                     }
-                    print(jsonDict as Any)
-                    self.displayInfo.text = jsonDict.stringValue
+                    print(jsonDict as Any) //just print whole disctionary to debug window.
+                    // Below takes teh raw dicitonary and send to the Info Pane ( 20 lines only )
+                    self.infoPane.text = "\(jsonDict.rawString() )"
                 case .failure(let error):
                     print(error.description)
                 }
